@@ -1,9 +1,9 @@
 <template>
-    <Head title="Skills" />
+    <Head title="Projects" />
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Edit Skills</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Edit Projects</h2>
         </template>
 
         <div class="py-12">
@@ -11,6 +11,15 @@
 
                 <form @submit.prevent="submit">
                     <div>
+                        <InputLabel for="skill_id" value="Skills" />
+
+                        <select name="skill_id" id="skill_id" v-model="form.skill_id" class="mt-1 block w-full border-gray-300 rounded-md text-base pl-3 pr-10 py-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option v-for="skill in skills" :key="skill.id" :value="skill.id">{{ skill.name }}</option>
+                        </select>
+                        <InputError class="mt-2" :message="$page.props.errors.skill_id" />
+                    </div>
+
+                    <div class="mt-3">
                         <InputLabel for="name" value="Name" />
 
                         <TextInput
@@ -18,9 +27,24 @@
                             type="text"
                             class="mt-1 block w-full"
                             v-model="form.name"
+                            autocomplete="name"
                         />
 
                         <InputError class="mt-2" :message="$page.props.errors.name" />
+                    </div>
+
+                    <div class="mt-3">
+                        <InputLabel for="project_url" value="URI" />
+
+                        <TextInput
+                            id="project_url"
+                            type="text"
+                            class="mt-1 block w-full"
+                            v-model="form.project_url"
+                            autocomplete="project_url"
+                        />
+
+                        <InputError class="mt-2" :message="$page.props.errors.project_url" />
                     </div>
 
                     <div class="mt-4">
@@ -56,25 +80,28 @@
     import InputLabel from '@/Components/InputLabel.vue';
     import PrimaryButton from '@/Components/PrimaryButton.vue';
     import TextInput from '@/Components/TextInput.vue';
-    // import {  } from '@inertiajs/vue3';
 
     const props = defineProps({
-        skill: Object
+        skills: Array,
+        project: Object
     });
 
     const form = useForm({
-        name: props.skill?.name,
+        name: props.project?.name,
         image: null,
+        skill_id: props.project?.skill_id,
+        project_url: props.project?.project_url
     });
 
     const submit = () => {
-        router.post(`/skills/${props.skill.id}`,{
+        router.post(`/projects/${props.project.id}`,{
             _method: "put",
             name: form.name,
             image: form.image,
+            skill_id: form.skill_id,
+            project_url: form.project_url,
         });
     };
-
 </script>
 
 <style lang="scss" scoped>

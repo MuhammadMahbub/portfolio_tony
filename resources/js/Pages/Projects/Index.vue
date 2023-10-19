@@ -48,7 +48,8 @@
                                     <img :src="project.image" class="w-12 rounded-full">
                                 </td>
                                 <td class="px-6 py-4">
-                                    Edit/Delete
+                                    <Link :href="route('projects.edit', project.id)" class="text-blue-500 font-medium mr-2">Edit</Link>
+                                    <Link :href="route('projects.destroy', project.id)" method="delete" as="button" type="button" class="text-red-500 font-medium">Delete</Link>
                                 </td>
                             </tr>
 

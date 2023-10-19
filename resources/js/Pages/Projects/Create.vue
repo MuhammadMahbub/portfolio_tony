@@ -16,6 +16,7 @@
                         <select name="skill_id" id="skill_id" v-model="form.skill_id" class="mt-1 block w-full border-gray-300 rounded-md text-base pl-3 pr-10 py-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             <option v-for="skill in skills" :key="skill.id" :value="skill.id">{{ skill.name }}</option>
                         </select>
+                        <InputError class="mt-2" :message="form.errors.skill_id" />
                     </div>
 
                     <div class="mt-3">
