@@ -16,9 +16,15 @@
         <div class="flex space-x-6 items-center justify-center">
           <img
             class="h-8 w-auto"
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="img/logo.png"
             alt="Laraveller.com"
-          />
+          /><span class="
+            self-center
+            text-xl
+            font-semibold
+            whitespace-nowrap
+            dark:text-white
+          ">Laraveller</span>
         </div>
         <p class="text-paragraph opacity-80 text-[15px]">
           &copy; 2022 Laraveller.com All right reserved.
@@ -27,3 +33,4 @@
     </div>
   </footer>
 </template>
+http://127.0.0.1:8000/
