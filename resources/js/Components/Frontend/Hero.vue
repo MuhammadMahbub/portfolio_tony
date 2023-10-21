@@ -59,7 +59,7 @@
           >
             Work with me
           </button>
-          <!-- <div class="pt-12">
+          <div class="pt-12">
             <h5
               class="
                 text-lg
@@ -192,7 +192,7 @@
                 </svg>
               </a>
             </div>
-          </div> -->
+          </div>
         </div>
         <div class="flex flex-1 justify-end items-center h-full mt-8 md:mt-0">
           <img

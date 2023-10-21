@@ -1,8 +1,32 @@
 <script setup>
+import { ref } from "vue";
+import { useForm } from "@inertiajs/vue3";
 
+const showMessage = ref(false);
 
+const form = useForm({
+  name: "",
+  email: "",
+  body: "",
+});
+
+function setShowMessage(value) {
+  showMessage.value = value;
+}
+
+function cleanForm() {
+  form.reset();
+  setShowMessage(true);
+  setTimeout(() => setShowMessage(false), 2000);
+}
+
+const submit = () => {
+  form.post(route("contact"), {
+    preserveScroll: true,
+    onSuccess: () => cleanForm(),
+  });
+};
 </script>
-
 <template>
   <section id="contact" class="section bg-light-primary dark:bg-dark-primary">
     <div
@@ -114,8 +138,9 @@
             </div>
           </div>
         </div>
-        <form class="space-y-8 w-full max-w-md">
+        <form @submit.prevent="submit" class="space-y-8 w-full max-w-md">
           <div
+            v-if="showMessage"
             class="
               m-2
               p-4
@@ -130,27 +155,36 @@
           <div class="flex gap-8">
             <div>
               <input
+                v-model="form.name"
                 type="text"
                 class="input"
                 placeholder="Your Name"
               />
-
+              <span v-if="form.errors.name" class="text-sm m-2 text-red-400">{{
+                form.errors.name
+              }}</span>
             </div>
             <div>
               <input
+                v-model="form.email"
                 type="email"
                 class="input"
                 placeholder="Your Email"
               />
-
+              <span v-if="form.errors.email" class="text-sm m-2 text-red-400">{{
+                form.errors.email
+              }}</span>
             </div>
           </div>
           <textarea
+            v-model="form.body"
             class="textarea"
             placeholder="Your Meassage"
             spellcheck="false"
           ></textarea>
-
+          <span v-if="form.errors.body" class="text-sm m-2 text-red-400">{{
+            form.errors.body
+          }}</span>
 
           <button class="btn btn-lg bg-accent hover:bg-secondary text-white">
             Send message

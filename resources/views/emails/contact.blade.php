@@ -2,3 +2,4 @@
 <p>{{ $body }}</p><br />
 <br />
 From the {{ $email }}
+

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
-const showMobileMenu = ref("false");
+const showMobileMenu = ref(false);
 const scrollBg = ref(false);
 
 const navigations = [
