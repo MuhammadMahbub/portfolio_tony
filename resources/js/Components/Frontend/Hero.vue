@@ -16,7 +16,7 @@
   >
     <div
       class="container mx-auto h-full"
-      
+
     >
       <div class="flex flex-col md:flex-row items-center h-full pt-8">
         <div class="flex-1 flex flex-col items-center lg:items-start">
@@ -59,7 +59,7 @@
           >
             Work with me
           </button>
-          <div class="pt-12">
+          <!-- <div class="pt-12">
             <h5
               class="
                 text-lg
@@ -192,7 +192,7 @@
                 </svg>
               </a>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="flex flex-1 justify-end items-center h-full mt-8 md:mt-0">
           <img
